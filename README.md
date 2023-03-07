@@ -1,2 +1,2 @@
 # IntroduccionABlockchain
-Repositorio de la materia optativa Introducción A Blockchain de la LTD en UTDT
+Repositorio de la materia optativa Introducción a Blockchain de la LTD en UTDT
