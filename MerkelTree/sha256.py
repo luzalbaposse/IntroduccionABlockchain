@@ -2,12 +2,6 @@ import hashlib
 import time
 import random
 
-#texto = "Hola, mundo!"
-#hash_object = hashlib.sha256(texto.encode('utf-8'))
-#hex_dig = hash_object.hexdigest()
-
-#print(hex_dig)
-
 def hash_sha256(data):
     sha256 = hashlib.sha256()
     sha256.update(data.encode('utf-8'))
@@ -39,3 +33,6 @@ print()
 hash_raiz = hashlib.sha256(hashes_pares[0].encode('utf-8')).hexdigest()
 print("Hash de la raiz: ", hash_raiz)
 print()
+
+
+
