@@ -1,5 +1,5 @@
+#importar web3
 from web3 import Web3
-
 # Conectarse a la red Ethereum
 w3 = Web3(Web3.HTTPProvider('https://mainnet.infura.io/v3/your-api-key'))
 
