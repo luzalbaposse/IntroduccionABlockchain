@@ -21,12 +21,12 @@ print()
 
 #Combino los hashes de transacciones adyacentes 
 pares_hashes = (hashes_transactions[i]+ hashes_transactions[i+1] for i in range(0, len(hashes_transactions), 2))
-print(pares_hashes)
-print()
+print("Hashes pares: ", pares_hashes)
+print(type (pares_hashes))
 
 #Calculo los hashes de los pares de hashes y los combino en una lista de hashes
 hashes_pares = [hashlib.sha256(p.encode('utf-8')).hexdigest() for p in pares_hashes]
-print("Hashes de los pares: ", hashes_pares)
+print("Hashes de los pares: ", list(hashes_pares))
 print()
 
 #Calculo el hash de la raiz
