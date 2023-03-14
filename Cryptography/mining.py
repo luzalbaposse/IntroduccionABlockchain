@@ -1,4 +1,4 @@
-#Código de ejemplo en la clas
+#Código de ejemplo en la clase
 import datetime
 import hashlib
 
@@ -29,10 +29,9 @@ class Block:
         return "Block Hash: " + str(self.hash()) + "\nBlockNo: " + str(self.blockNo) + "\nBlock Data: " + str(self.data) + "\nHashes: " + str(self.nonce) + "\n--------------"
 
 class Blockchain:
-
-    maxNonce = 2**32
-    
-    block = Block("Genesis")
+    # Este objeto define el bloque génesis y el bloque actual
+    maxNonce = 2**32 # El número máximo de nonce que podemos probar 
+    block = Block("Genesis") # Creamos el bloque génesis
     dummy = head = block
 
     def add(self, block):
