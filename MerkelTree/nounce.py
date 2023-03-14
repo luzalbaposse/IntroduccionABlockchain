@@ -2,6 +2,7 @@
 # La idea es ingresar una palabra, hashearla y encontrar el nounce que le corresponda en relacion a la dificultad que asignemos 
 # Entonces, si la dificultad es 3, el hash debe comenzar con 3 ceros
 import hashlib
+import random
 
 #Defino la palabra a hashear
 texto = "Este es todo el don quijote de la mancha: En algun lugar de la mancha cuyo nombre no puedo acordarme..."
@@ -10,7 +11,7 @@ texto = "Este es todo el don quijote de la mancha: En algun lugar de la mancha c
 texto_bytes = bytes(texto, "utf-8")
 
 # La dificultad va a ser la cantidad de 0
-dificultad = 9
+dificultad = 2
 
 # Nounce inicial
 nounce = 0
@@ -31,4 +32,5 @@ while True:
         break
     
     # Hasta que encontremos la dificultad que queremos le vamos sumando 1 al nounce
-    nounce += 1
+    nounce =+1
+    break
