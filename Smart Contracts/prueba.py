@@ -1,62 +1,20 @@
-# Smart Contract hecho con Vyper para ingresar un texto y hashearlo con SHA-256, para enviarlo a una adress y que el que tenga la clave privada de esa adress pueda desbloquear el texto
-import vyper
-import hashlib
+# Setup
 from web3 import Web3
-from vyper import compiler
-from vyper import ast as vy_ast
 
-# Compilamos el smart contract
-vyper_code = open('smartcontract.vy').read()
-compiled_code = compiler.compile_code(vyper_code)
+alchemy_url = "https://eth-mainnet.g.alchemy.com/v2/ZRs8u9az8W-Gf8jyO3E2bd1rFI7tO2nb"
+w3 = Web3(Web3.HTTPProvider(alchemy_url))
 
-# Importamos el smart contract compilado
-abi = compiled_code['abi']
-bytecode = compiled_code['bytecode']
+# Print if web3 is successfully connected
+print(w3.isConnected())
 
-# Conectamos a la red de Ethereum
-w3 = Web3(Web3.HTTPProvider('https://ropsten.infura.io/v3/...'))
+# Get the latest block number
+latest_block = w3.eth.block_number
+print(latest_block)
 
-# Definimos la direccion del smart contract
-contract_address = Web3.toChecksumAddress('0xf1b997a165D088EF6FA1a0877081524a95f41eDE')
-contract = w3.eth.contract(address=contract_address, abi=abi)
+# Get the balance of an account
+balance = w3.eth.get_balance('0x742d35Cc6634C0532925a3b844Bc454e4438f44e')
+print(balance)
 
-# Definimos la direccion de la cuenta que va a desbloquear el texto
-account_address = Web3.toChecksumAddress('0xf1b997a165D088EF6FA1a0877081524a95f41eDE')
-
-# Definimos la clave privada de la cuenta que va a desbloquear el texto
-account_private_key = '0xf1b997a165D088EF6FA1a0877081524a95f41eDE'
-account = w3.eth.account.privateKeyToAccount(account_private_key)
-
-#Definimos el texto a hashear
-texto = "hola, qué onda?"
-
-#Convierto a bytes
-texto_bytes = bytes(texto, "utf-8")
-
-#Hasheo con SHA-256
-hash = hashlib.sha256(texto_bytes).hexdigest()
-
-# Enviamos la transaccion para hashear el texto
-transaction = contract.functions.hash_texto(texto, hash).buildTransaction({
-    'gas': 1000000,
-    'gasPrice': w3.toWei('1', 'gwei'),
-    'nonce': w3.eth.getTransactionCount(account_address)
-})
-
-# Firmamos la transaccion
-signed_txn = account.signTransaction(transaction)
-
-# Enviamos la transaccion
-tx_hash = w3.eth.sendRawTransaction(signed_txn.rawTransaction)
-
-# Esperamos a que se confirme la transaccion
-tx_receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-
-# Enviamos la transaccion para desbloquear el texto
-transaction = contract.functions.desbloquear_texto(texto, hash).buildTransaction({
-    'gas': 1000000,
-    'gasPrice': w3.toWei('1', 'gwei'),
-    'nonce': w3.eth.getTransactionCount(account_address)
-})
-
-
+# Get the information of a transaction
+tx = w3.eth.get_transaction('0x5c504ed432cb51138bcf09aa5e8a410dd4a1e204ef84bfed1be16dfba1b22060')
+print(tx)
