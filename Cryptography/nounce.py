@@ -4,13 +4,13 @@
 import hashlib
 
 #Defino la palabra a hashear
-texto = "Este es todo el don quijote de la mancha: En algun lugar de la mancha cuyo nombre no puedo acordarme..."
+texto = "hola"
 
 #Convierto a bytes
 texto_bytes = bytes(texto, "utf-8")
 
 # La dificultad va a ser la cantidad de 0
-dificultad = 3
+dificultad = 4
 
 # Nounce inicial
 nounce = 0
