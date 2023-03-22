@@ -27,4 +27,6 @@ contract VendingMachine {
         cupcakeBalances[address(this)] -= amount;
         cupcakeBalances[msg.sender] += amount;
     }
+
+     
 }
