@@ -19,8 +19,9 @@ contract DividirGastos{
         }
     }
     function retirar() public { // función que retira el pago
-        uint256 balance = balances[msg.sender]; // guardo el balance de la cuenta
+            uint256 balance = balances[msg.sender]; // guardo el balance de la cuenta
         balances[msg.sender] = 0; // pongo el balance en cero
-        msg.sender.transfer(balance); // transfiero el balance a la cuenta
+        //transfiero el balance a la cuenta
+        (bool success, ) = msg.sender.call{value: balance}("");
     }
 }

@@ -12,8 +12,8 @@ contract Votacion {
     uint256 public candidatosContador; // contador de candidatos
 
     constructor() {
-        agregarCandidato("Candidato 1"); // agrego un candidato
-        agregarCandidato("Candidato 2"); // agrego un candidato
+        agregarCandidato("Alberto"); // agrego un candidato
+        agregarCandidato("Horacio"); // agrego un candidato
     }
 
     function agregarCandidato(string memory _nombre) private { // función que agrega un candidato
