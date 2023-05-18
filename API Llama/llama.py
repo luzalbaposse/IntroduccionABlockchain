@@ -1,5 +1,8 @@
-# Importo API de Llama Protocol
+# Importo matplotlib
 import matplotlib.pyplot as plt
+#Pandas
+import pandas as pd
+# Importo API de Llama Protocol
 from llama import DefiLlama
 # Instancio API de Llama Protocol
 defillama = DefiLlama()
