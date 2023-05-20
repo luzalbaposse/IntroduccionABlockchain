@@ -3,10 +3,13 @@ import matplotlib.pyplot as plt
 #Pandas
 import pandas as pd
 # Importo API de Llama Protocol
-from llama import DefiLlama
+import requests
 # Instancio API de Llama Protocol
 defillama = DefiLlama()
 
+url = "https://api.llama.fi/protocols"
+response = requests.get(url)
+data = response.json()
 # Obtengo datos de TVL
 tvl = defillama.get_tvl()
 
